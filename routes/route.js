@@ -6,8 +6,8 @@ const {validationSchema} = require('../models/validation');
 
 router
     .post('/',validationSchema[1], controller.addUser)
-    .get('/', validationSchema[0], controller.getUser)
-    .put('/user_id', validationSchema, controller.updateUser)
-    .delete('/user_id', validationSchema[0], controller.deleteUser);
+    .get('/:user_id', controller.getUser)
+    .put('/:user_id', validationSchema[1], controller.updateUser)
+    .delete('/:user_id', validationSchema[1], controller.deleteUser);
 
 module.exports = router;

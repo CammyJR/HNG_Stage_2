@@ -68,8 +68,8 @@ exports.getUser = async(req, res) =>{
     }
 
     //reading...
-    const id = req.body.id;
-    //console.log(id); //take out later
+    const id = req.params.user_id;
+    console.log(id); //take out later
     return User.findOne({ id: id })
         .select('-_id id name')
         .exec()
@@ -105,7 +105,7 @@ exports.updateUser = async (req, res) => {
     }
 
     //updating...
-    const id = req.body.id;
+    const id = req.params.user_id;
     const newName = req.body.name;
     console.log(id)
     return User.findOneAndUpdate({id: id},
@@ -142,7 +142,7 @@ exports.deleteUser = async (req, res) => {
     };
 
     //deleting...
-    const id = req.body.id;
+    const id = req.params.user_id;
     console.log(id);
     return User.findOneAndDelete({ id: id })
         .select('-_id id name')
